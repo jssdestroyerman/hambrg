@@ -24,9 +24,5 @@
 </div>
 
 <style lang="postcss">
-	:global(html) {
-		background-color: theme(colors.gray.100);
-	}
-
 	/* colors $red: #cd2d22; $black: #191919; */
 </style>

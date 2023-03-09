@@ -39,5 +39,5 @@
 </header>
 
 {#if open}
-	<Menu />
+	<Menu {open} />
 {/if}
