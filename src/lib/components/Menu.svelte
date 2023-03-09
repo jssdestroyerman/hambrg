@@ -1,6 +1,6 @@
 <div class="fixed top-0 left-0 right-0 bottom-0 bg-[#191919] z-10" />
 <div
-	class="fixed top-0 left-0 right-0 bottom-0 bg-[#d31900] z-10 flex justify-center items-center "
+	class="fixed top-0 left-0 right-0 bottom-0 bg-[#cd2d22] z-10 flex justify-center items-center "
 >
 	<div class="w-11/12 md:w-3/4 ">
 		<div class="text-gray-100 flex justify-between items-center">

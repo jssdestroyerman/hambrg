@@ -28,5 +28,5 @@
 		background-color: theme(colors.gray.100);
 	}
 
-	/* colors $red: #e20001; $black: #191919; */
+	/* colors $red: #cd2d22; $black: #191919; */
 </style>
