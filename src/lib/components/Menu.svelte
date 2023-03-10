@@ -33,6 +33,12 @@
 			delay: 0.5,
 			stagger: 0.05
 		});
+
+		gsap.to('.stylePromise', {
+			opacity: 1,
+			delay: 0.5,
+			duration: 2
+		});
 	}
 
 	function closeMenu() {
@@ -69,7 +75,7 @@
 	bind:this={menu1}
 >
 	<div
-		class="h-full w-[110%] bg-[#cd2d22] flex justify-center items-center -translate-y-72 rotate-6"
+		class="h-full w-[100%] bg-[#cd2d22] flex justify-center items-center -translate-y-72 rotate-6"
 		bind:this={menu2}
 	>
 		<div class="w-[calc(91.666667%_-_100px)] md:w-[calc(75%_-_100px)]">
@@ -81,7 +87,7 @@
 					<li><a href="/solutions" on:click={menuNavigation}>Solutions</a></li>
 					<li><a href="/contact" on:click={menuNavigation}>Contact us</a></li>
 				</ul>
-				<div class="w-[350px]">
+				<div class="w-[350px] stylePromise opacity-0">
 					<p class="font-bold pb-4 text-xl">Our Promise</p>
 					<p>
 						The passage experienced a surge in popularity during the 1960s when Letraset used it on
