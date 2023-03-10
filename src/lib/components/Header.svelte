@@ -2,15 +2,9 @@
 	import { gsap } from 'gsap';
 	import { onMount } from 'svelte';
 	import Menu from './Menu.svelte';
+	import { menuState } from '../../store';
 
-	let menuState = {
-		first: false,
-		second: false,
-		third: false
-	};
 	let setDisable = false;
-
-	$: console.log(menuState);
 
 	onMount(() => {
 		gsap.from('header', {
@@ -45,16 +39,14 @@
 				setDisable = false;
 			}, 1000);
 
-			if (menuState.first === false) {
-				menuState.first = true; // wich mean its open
-			} else if (menuState.second === false) {
-				console.log('oui ici');
-
-				menuState.second = true; // wich mean its closed
+			if ($menuState.first === false) {
+				$menuState.first = true; // wich mean its open
+			} else if ($menuState.second === false) {
+				$menuState.second = true; // wich mean its closed
 				setTimeout(() => {
-					menuState.third = !menuState.third;
-					menuState.first = false;
-					menuState.second = false;
+					$menuState.third = !$menuState.third;
+					$menuState.first = false;
+					$menuState.second = false;
 				}, 900);
 			}
 		}}
@@ -66,6 +58,6 @@
 	</button>
 </header>
 
-{#key menuState.third}
-	<Menu {menuState} />
+{#key $menuState.third}
+	<Menu />
 {/key}
