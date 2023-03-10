@@ -1,8 +1,10 @@
 <script>
+	import Header from '$lib/components/Header.svelte';
 	import '../app.css';
 </script>
 
-<div class="app flex justify-center flex-col items-center">
+<div class="app flex justify-center flex-col items-center h-[100vh]">
+	<Header />
 	<slot />
 </div>
 

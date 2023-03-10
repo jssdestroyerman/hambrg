@@ -1,7 +1,9 @@
 <script lang="ts">
 	import { gsap } from 'gsap';
+	import { menuState } from '../../store';
 
-	export let menuState: any;
+	console.log($menuState);
+
 	let menu1: any;
 	let menu2: any;
 
@@ -39,11 +41,20 @@
 		});
 	}
 
-	$: if (menuState.first === true) {
+	$: if ($menuState.first === true) {
 		openMenu();
 	}
-	$: if (menuState.second === true) {
+	$: if ($menuState.second === true) {
 		closeMenu();
+	}
+
+	function menuNavigation() {
+		closeMenu();
+		setTimeout(() => {
+			$menuState.third = !$menuState.third;
+			$menuState.first = false;
+			$menuState.second = false;
+		}, 900);
 	}
 </script>
 
@@ -58,9 +69,11 @@
 		<div class="w-[calc(91.666667%_-_100px)] md:w-[calc(75%_-_100px)]">
 			<div class="text-gray-100 flex justify-between items-center">
 				<ul class="font-bold text-7xl">
-					<li><a href="/opportunities">Opportunities</a></li>
-					<li><a href="/solutions">Solutions</a></li>
-					<li><a href="/contact">Contact us</a></li>
+					<li>
+						<a href="/opportunities" on:click={menuNavigation}>opportunities</a>
+					</li>
+					<li><a href="/solutions" on:click={menuNavigation}>Solutions</a></li>
+					<li><a href="/contact" on:click={menuNavigation}>Contact us</a></li>
 				</ul>
 				<div class="w-[350px]">
 					<p class="font-bold pb-4 text-xl">Our Promise</p>
