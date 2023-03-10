@@ -16,7 +16,7 @@
 			y: 0,
 			rotate: 0,
 			delay: 0.05,
-			duration: 0.9
+			duration: 0.7
 		});
 
 		gsap.to('li > a', {
@@ -48,14 +48,14 @@
 </script>
 
 <div
-	class="absolute top-[-200px] left-[-50px] right-[-50px] bottom-0 bg-[#191919] z-10 translate-y-[-100%] rotate-12 overflow-hidden"
+	class="absolute top-[-210px] left-[-100px] right-[-100px] bottom-0 bg-[#191919] z-10 translate-y-[-100%] rotate-12 overflow-hidden"
 	bind:this={menu1}
 >
 	<div
-		class="h-full w-[110%] bg-[#cd2d22] flex justify-center items-center -translate-y-32 rotate-6"
+		class="h-full w-[110%] bg-[#cd2d22] flex justify-center items-center -translate-y-72 rotate-6"
 		bind:this={menu2}
 	>
-		<div class="w-[calc(91.666667%_-_50px)] md:w-[calc(75%_-_50px)]">
+		<div class="w-[calc(91.666667%_-_100px)] md:w-[calc(75%_-_100px)]">
 			<div class="text-gray-100 flex justify-between items-center">
 				<ul class="font-bold text-7xl">
 					<li><a href="/opportunities">Opportunities</a></li>
