@@ -1,17 +1,18 @@
 <script lang="ts">
 	import { gsap } from 'gsap';
-	import { onMount } from 'svelte';
 
-	export let open: any;
+	export let menuState: any;
+	let menu1: any;
+	let menu2: any;
 
-	onMount(() => {
-		gsap.to('.styleMenu1', {
+	function openMenu() {
+		gsap.to(menu1, {
 			y: 0,
 			rotate: 0,
 			duration: 0.7
 		});
 
-		gsap.to('.styleMenu2', {
+		gsap.to(menu2, {
 			y: 0,
 			rotate: 0,
 			delay: 0.05,
@@ -24,14 +25,35 @@
 			delay: 0.5,
 			rotate: 0
 		});
-	});
+	}
+
+	function closeMenu() {
+		gsap.to(menu1, {
+			y: '-100%',
+			duration: 0.9
+		});
+
+		gsap.to(menu2, {
+			y: '-50%',
+			duration: 0.9
+		});
+	}
+
+	$: if (menuState.first === true) {
+		openMenu();
+	}
+	$: if (menuState.second === true) {
+		closeMenu();
+	}
 </script>
 
 <div
-	class="absolute top-[-200px] left-[-50px] right-[-50px] bottom-0 bg-[#191919] z-10 -translate-y-[100%] rotate-12 styleMenu1 overflow-hidden"
+	class="absolute top-[-200px] left-[-50px] right-[-50px] bottom-0 bg-[#191919] z-10 translate-y-[-100%] rotate-12 overflow-hidden"
+	bind:this={menu1}
 >
 	<div
-		class="h-full w-[110%] bg-[#cd2d22] flex justify-center items-center -translate-y-32 rotate-6 styleMenu2"
+		class="h-full w-[110%] bg-[#cd2d22] flex justify-center items-center -translate-y-32 rotate-6"
+		bind:this={menu2}
 	>
 		<div class="w-[calc(91.666667%_-_50px)] md:w-[calc(75%_-_50px)]">
 			<div class="text-gray-100 flex justify-between items-center">

@@ -3,7 +3,13 @@
 	import { onMount } from 'svelte';
 	import Menu from './Menu.svelte';
 
-	let open = false;
+	let menuState = {
+		first: false,
+		second: false,
+		third: false
+	};
+
+	$: console.log(menuState);
 
 	onMount(() => {
 		gsap.from('header', {
@@ -29,7 +35,20 @@
 	<h1 class="font-semibold text-xl">
 		<a href="/"> HAMBRG. </a>
 	</h1>
-	<button class="text-lg overflow-hidden" on:click={() => (open = !open)}
+	<button
+		class="text-lg overflow-hidden"
+		on:click={() => {
+			if (menuState.first === false) {
+				menuState.first = true;
+			} else if (menuState.second === false) {
+				menuState.second = true; // wich mean its closed
+				setTimeout(() => {
+					menuState.third = !menuState.third;
+					menuState.first = false;
+					menuState.second = false;
+				}, 900);
+			}
+		}}
 		>{#each 'Menu' as letter}
 			<span class="inline-block opacity-0 -translate-y-4">
 				{letter}
@@ -38,6 +57,6 @@
 	</button>
 </header>
 
-{#if open}
-	<Menu {open} />
-{/if}
+{#key menuState.third}
+	<Menu {menuState} />
+{/key}
