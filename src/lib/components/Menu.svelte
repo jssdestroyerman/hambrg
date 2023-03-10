@@ -4,6 +4,7 @@
 	export let menuState: any;
 	let menu1: any;
 	let menu2: any;
+	let span1: any;
 
 	function openMenu() {
 		gsap.to(menu1, {
@@ -58,7 +59,9 @@
 		<div class="w-[calc(91.666667%_-_100px)] md:w-[calc(75%_-_100px)]">
 			<div class="text-gray-100 flex justify-between items-center">
 				<ul class="font-bold text-7xl">
-					<li><a href="/opportunities">Opportunities</a></li>
+					<li>
+						<a href="/opportunities" on:click={() => {}}>opportunities</a>
+					</li>
 					<li><a href="/solutions">Solutions</a></li>
 					<li><a href="/contact">Contact us</a></li>
 				</ul>

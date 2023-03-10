@@ -8,6 +8,7 @@
 		second: false,
 		third: false
 	};
+	let setDisable = false;
 
 	$: console.log(menuState);
 
@@ -31,16 +32,24 @@
 	});
 </script>
 
-<header class="flex justify-between items-center pt-10 z-20">
+<header class="flex justify-between items-center pt-10 z-20 w-11/12 md:w-3/4 mx-auto">
 	<h1 class="font-semibold text-xl">
 		<a href="/"> HAMBRG. </a>
 	</h1>
 	<button
+		disabled={setDisable}
 		class="text-lg overflow-hidden"
 		on:click={() => {
+			setDisable = true;
+			setTimeout(() => {
+				setDisable = false;
+			}, 1000);
+
 			if (menuState.first === false) {
-				menuState.first = true;
+				menuState.first = true; // wich mean its open
 			} else if (menuState.second === false) {
+				console.log('oui ici');
+
 				menuState.second = true; // wich mean its closed
 				setTimeout(() => {
 					menuState.third = !menuState.third;
