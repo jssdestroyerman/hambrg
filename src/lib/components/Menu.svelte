@@ -6,6 +6,7 @@
 
 	let menu1: any;
 	let menu2: any;
+	let locations: any;
 
 	function openMenu() {
 		gsap.to(menu1, {
@@ -26,6 +27,11 @@
 			y: 0,
 			delay: 0.5,
 			rotate: 0
+		});
+		gsap.from('.styleLocations > span', {
+			x: -20,
+			delay: 0.5,
+			stagger: 0.05
 		});
 	}
 
@@ -84,7 +90,7 @@
 					</p>
 				</div>
 			</div>
-			<div class="flex justify-between items-center w-[600px] text-gray-100 mt-10">
+			<div class="flex justify-between items-center w-[600px] text-gray-100 mt-10 styleLocations">
 				<span>Locations:</span>
 				<span>Dallas</span>
 				<span>Austin</span>
@@ -96,12 +102,13 @@
 	</div>
 </div>
 
-<style>
+<style lang="postcss">
 	ul > li {
 		line-height: 110px;
 		overflow: hidden;
 	}
 	a {
+		@apply hover:text-gray-300;
 		display: inline-block;
 		transform: translateY(100px) rotate(5deg);
 	}
