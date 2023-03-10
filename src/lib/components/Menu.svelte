@@ -17,6 +17,13 @@
 			delay: 0.05,
 			duration: 0.9
 		});
+
+		gsap.to('li > a', {
+			stagger: 0.2,
+			y: 0,
+			delay: 0.5,
+			rotate: 0
+		});
 	});
 </script>
 
@@ -24,7 +31,7 @@
 	class="absolute top-0 left-[-50px] right-[-50px] bottom-0 bg-[#191919] z-10 -translate-y-[100%] rotate-12 styleMenu1 overflow-hidden"
 >
 	<div
-		class="absolute top-[-50px] bottom-0 right-[-100px] left-0 bg-[#cd2d22] flex justify-center items-center -translate-y-32 rotate-6 styleMenu2"
+		class="h-full w-[110%] bg-[#cd2d22] flex justify-center items-center -translate-y-32 rotate-6 styleMenu2"
 	>
 		<div class="w-[calc(91.666667%_-_50px)] md:w-[calc(75%_-_50px)]">
 			<div class="text-gray-100 flex justify-between items-center">
@@ -57,5 +64,10 @@
 <style>
 	ul > li {
 		line-height: 110px;
+		overflow: hidden;
+	}
+	a {
+		display: inline-block;
+		transform: translateY(100px) rotate(5deg);
 	}
 </style>
