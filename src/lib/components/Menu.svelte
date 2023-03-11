@@ -127,7 +127,10 @@
 		class="h-full w-[100%] bg-[#cd2d22] -translate-y-72 rotate-6 flex justify-center items-center flex-col"
 		bind:this={menu2}
 	>
-		<div bind:this={menu3} class="absolute top-0 left-0 right-0 bottom-0 opacity-0 bg-cover" />
+		<div
+			bind:this={menu3}
+			class="absolute top-0 left-0 right-0 bottom-0 opacity-0 cityBackground"
+		/>
 		<div class="w-[calc(91.666667%_-_100px)] md:w-[calc(75%_-_100px)] relative top-40">
 			<div class="text-gray-100 flex justify-between items-center">
 				<ul class="font-bold text-9xl">
@@ -228,5 +231,28 @@
 	}
 	.stylePromise {
 		text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.466);
+	}
+
+	.cityBackground {
+		animation-name: backgroundEffect;
+		animation-duration: 30s;
+		animation-iteration-count: infinite;
+	}
+	@keyframes backgroundEffect {
+		0% {
+			background-position: 0% 0%;
+		}
+		25% {
+			background-position: 40% 10%;
+		}
+		50% {
+			background-position: 0 10%;
+		}
+		75% {
+			background-position: 10% 40%;
+		}
+		100% {
+			background-position: 0% 0%;
+		}
 	}
 </style>
