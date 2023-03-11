@@ -4,6 +4,18 @@
 
 	let menu1: any;
 	let menu2: any;
+	let menu3: any;
+	let roundedBlack: any;
+	let city = '';
+	const cities = [
+		{ name: 'Dallas', image: 'dallas' },
+		{ name: 'Austin', image: 'austin' },
+		{ name: 'New York', image: 'newyork' },
+		{ name: 'San Francisco', image: 'sanfrancisco' },
+		{ name: 'Beijing', image: 'beijing' }
+	];
+
+	$: console.log(city);
 
 	function openMenu() {
 		gsap.to(menu1, {
@@ -65,6 +77,29 @@
 			$menuState.second = false;
 		}, 900);
 	}
+
+	function handleCity() {
+		gsap.from(menu3, {
+			skewY: 2
+		});
+		gsap.to(menu3, {
+			background: `url("${city}") center center`,
+			opacity: 1,
+			duration: 0.5
+		});
+
+		gsap.to(roundedBlack, {
+			scale: 1
+		});
+	}
+	function handleCityReturn() {
+		gsap.to(menu3, {
+			opacity: 0
+		});
+		gsap.to(roundedBlack, {
+			scale: 0
+		});
+	}
 </script>
 
 <div
@@ -75,6 +110,7 @@
 		class="h-full w-[100%] bg-[#cd2d22] -translate-y-72 rotate-6 flex justify-center items-center flex-col"
 		bind:this={menu2}
 	>
+		<div bind:this={menu3} class="absolute top-0 left-0 right-0 bottom-0 opacity-0 " />
 		<div class="w-[calc(91.666667%_-_100px)] md:w-[calc(75%_-_100px)] relative top-40">
 			<div class="text-gray-100 flex justify-between items-center">
 				<ul class="font-bold text-9xl">
@@ -84,22 +120,37 @@
 					<li><a href="/solutions" on:click={menuNavigation}>Solutions</a></li>
 					<li><a href="/contact" on:click={menuNavigation}>Contact us</a></li>
 				</ul>
-				<div class="w-[350px] stylePromise opacity-0">
-					<p class="font-bold pb-4 text-xl">Our Promise</p>
-					<p>
-						The passage experienced a surge in popularity during the 1960s when Letraset used it on
-						their dry-transfer sheets, and again during the 90s as desktop publishers bundled the
-						text with their software.
-					</p>
+				<div
+					class="w-[450px] h-[450px] stylePromise opacity-0 relative rounded-full flex justify-center items-center flex-col"
+				>
+					<div
+						class="bg-black top-0 bottom-0 right-0 left-0 absolute scale-0 rounded-full z-10"
+						bind:this={roundedBlack}
+					/>
+					<div class="w-[300px] relative z-20">
+						<p class="font-bold pb-4 text-xl">Our Promise</p>
+						<p>
+							The passage experienced a surge in popularity during the 1960s when Letraset used it
+							on their dry-transfer sheets, and again during the 90s as desktop publishers bundled
+							the text with their software.
+						</p>
+					</div>
 				</div>
 			</div>
 			<div class="flex justify-between items-center w-[800px] text-gray-100 mt-40 styleLocations">
 				<span class="text-xl styleLocations">Locations:</span>
-				<span class="styleSpan">Dallas</span>
-				<span class="styleSpan">Austin</span>
-				<span class="styleSpan">New York</span>
-				<span class="styleSpan">San Francisco</span>
-				<span class="styleSpan">Beijing</span>
+				{#each cities as { name, image }}
+					<span
+						class="styleSpan"
+						on:mouseenter={() => {
+							city = image + '.webp';
+							handleCity();
+						}}
+						on:mouseleave={() => {
+							handleCityReturn();
+						}}>{name}</span
+					>
+				{/each}
 			</div>
 		</div>
 	</div>
