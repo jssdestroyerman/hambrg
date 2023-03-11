@@ -77,9 +77,9 @@
 	>
 		<div class="w-[calc(91.666667%_-_100px)] md:w-[calc(75%_-_100px)] relative top-40">
 			<div class="text-gray-100 flex justify-between items-center">
-				<ul class="font-bold text-7xl">
+				<ul class="font-bold text-9xl">
 					<li>
-						<a href="/opportunities" on:click={menuNavigation}>opportunities</a>
+						<a href="/opportunities" on:click={menuNavigation}>Opportunities</a>
 					</li>
 					<li><a href="/solutions" on:click={menuNavigation}>Solutions</a></li>
 					<li><a href="/contact" on:click={menuNavigation}>Contact us</a></li>
@@ -107,17 +107,17 @@
 
 <style lang="postcss">
 	ul > li {
-		line-height: 110px;
+		line-height: 160px;
 		overflow: hidden;
 		text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.466);
 	}
 	a {
-		@apply hover:text-black;
+		@apply inline-block hover:text-black skew-x-6;
 		display: inline-block;
-		transform: translateY(100px) rotate(5deg);
+		transform: translateY(100%) rotate(5deg);
 	}
 	.styleSpan {
-		@apply cursor-pointer px-2 py-2;
+		@apply cursor-pointer px-2 py-2 overflow-hidden rounded-md;
 	}
 	.styleSpan::before {
 		content: '';
@@ -127,17 +127,19 @@
 		right: 0;
 		bottom: 0;
 		background-color: black;
-		transform-origin: bottom;
-		transform: scaleY(0);
+		border-radius: 50%;
+		transform: scale(0);
 		transition-duration: 0.5s;
 		z-index: -10;
 	}
 
 	.styleSpan:hover::before {
-		transform: scaleY(1);
+		transform: scale(2);
 	}
-
 	.styleLocations {
+		text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.466);
+	}
+	.stylePromise {
 		text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.466);
 	}
 </style>
