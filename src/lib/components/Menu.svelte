@@ -2,10 +2,6 @@
 	import { gsap } from 'gsap';
 	import { menuState } from '../../store';
 
-	let mouseEnter = false;
-
-	$: console.log(mouseEnter);
-
 	let menu1: any;
 	let menu2: any;
 
@@ -79,10 +75,6 @@
 		class="h-full w-[100%] bg-[#cd2d22] -translate-y-72 rotate-6 flex justify-center items-center flex-col"
 		bind:this={menu2}
 	>
-		{#if mouseEnter}
-			<img src="beijing.webp" alt="" class="absolute w-full h-full" />
-		{/if}
-
 		<div class="w-[calc(91.666667%_-_100px)] md:w-[calc(75%_-_100px)] relative top-40">
 			<div class="text-gray-100 flex justify-between items-center">
 				<ul class="font-bold text-7xl">
@@ -103,11 +95,7 @@
 			</div>
 			<div class="flex justify-between items-center w-[800px] text-gray-100 mt-40 styleLocations">
 				<span class="text-xl styleLocations">Locations:</span>
-				<span
-					class="styleSpan"
-					on:mouseenter={() => (mouseEnter = !mouseEnter)}
-					on:mouseleave={() => (mouseEnter = !mouseEnter)}>Dallas</span
-				>
+				<span class="styleSpan">Dallas</span>
 				<span class="styleSpan">Austin</span>
 				<span class="styleSpan">New York</span>
 				<span class="styleSpan">San Francisco</span>
