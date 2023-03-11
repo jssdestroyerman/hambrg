@@ -2,11 +2,12 @@
 	import { gsap } from 'gsap';
 	import { menuState } from '../../store';
 
-	console.log($menuState);
+	let mouseEnter = false;
+
+	$: console.log(mouseEnter);
 
 	let menu1: any;
 	let menu2: any;
-	let locations: any;
 
 	function openMenu() {
 		gsap.to(menu1, {
@@ -75,10 +76,14 @@
 	bind:this={menu1}
 >
 	<div
-		class="h-full w-[100%] bg-[#cd2d22] flex justify-center items-center -translate-y-72 rotate-6"
+		class="h-full w-[100%] bg-[#cd2d22] -translate-y-72 rotate-6 flex justify-center items-center flex-col"
 		bind:this={menu2}
 	>
-		<div class="w-[calc(91.666667%_-_100px)] md:w-[calc(75%_-_100px)]">
+		{#if mouseEnter}
+			<img src="beijing.webp" alt="" class="absolute w-full h-full" />
+		{/if}
+
+		<div class="w-[calc(91.666667%_-_100px)] md:w-[calc(75%_-_100px)] relative top-40">
 			<div class="text-gray-100 flex justify-between items-center">
 				<ul class="font-bold text-7xl">
 					<li>
@@ -96,13 +101,17 @@
 					</p>
 				</div>
 			</div>
-			<div class="flex justify-between items-center w-[600px] text-gray-100 mt-10 styleLocations">
-				<span>Locations:</span>
-				<span>Dallas</span>
-				<span>Austin</span>
-				<span>New York</span>
-				<span>San Francisco</span>
-				<span>Beijing</span>
+			<div class="flex justify-between items-center w-[800px] text-gray-100 mt-40 styleLocations">
+				<span class="text-xl styleLocations">Locations:</span>
+				<span
+					class="styleSpan"
+					on:mouseenter={() => (mouseEnter = !mouseEnter)}
+					on:mouseleave={() => (mouseEnter = !mouseEnter)}>Dallas</span
+				>
+				<span class="styleSpan">Austin</span>
+				<span class="styleSpan">New York</span>
+				<span class="styleSpan">San Francisco</span>
+				<span class="styleSpan">Beijing</span>
 			</div>
 		</div>
 	</div>
@@ -112,10 +121,35 @@
 	ul > li {
 		line-height: 110px;
 		overflow: hidden;
+		text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.466);
 	}
 	a {
-		@apply hover:text-gray-300;
+		@apply hover:text-black;
 		display: inline-block;
 		transform: translateY(100px) rotate(5deg);
+	}
+	.styleSpan {
+		@apply cursor-pointer px-2 py-2;
+	}
+	.styleSpan::before {
+		content: '';
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		background-color: black;
+		transform-origin: bottom;
+		transform: scaleY(0);
+		transition-duration: 0.5s;
+		z-index: -10;
+	}
+
+	.styleSpan:hover::before {
+		transform: scaleY(1);
+	}
+
+	.styleLocations {
+		text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.466);
 	}
 </style>
