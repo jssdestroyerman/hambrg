@@ -83,7 +83,7 @@
 			skewY: 2
 		});
 		gsap.to(menu3, {
-			background: `url("${city}") center center`,
+			background: `url("${city}")`,
 			opacity: 1,
 			duration: 0.5
 		});
@@ -100,6 +100,23 @@
 			scale: 0
 		});
 	}
+
+	const handleHover = (e: any) => {
+		gsap.to(e.target, {
+			duration: 0.3,
+			y: 3,
+			skewX: 4,
+			ease: 'power3.inOut'
+		});
+	};
+	const handleHoverExit = (e: any) => {
+		gsap.to(e.target, {
+			duration: 0.3,
+			y: -3,
+			skewX: 0,
+			ease: 'power3.inOut'
+		});
+	};
 </script>
 
 <div
@@ -110,15 +127,34 @@
 		class="h-full w-[100%] bg-[#cd2d22] -translate-y-72 rotate-6 flex justify-center items-center flex-col"
 		bind:this={menu2}
 	>
-		<div bind:this={menu3} class="absolute top-0 left-0 right-0 bottom-0 opacity-0 " />
+		<div bind:this={menu3} class="absolute top-0 left-0 right-0 bottom-0 opacity-0 bg-cover" />
 		<div class="w-[calc(91.666667%_-_100px)] md:w-[calc(75%_-_100px)] relative top-40">
 			<div class="text-gray-100 flex justify-between items-center">
 				<ul class="font-bold text-9xl">
 					<li>
-						<a href="/opportunities" on:click={menuNavigation}>Opportunities</a>
+						<a
+							href="/opportunities"
+							on:click={menuNavigation}
+							on:mouseenter={handleHover}
+							on:mouseleave={handleHoverExit}>Opportunities</a
+						>
 					</li>
-					<li><a href="/solutions" on:click={menuNavigation}>Solutions</a></li>
-					<li><a href="/contact" on:click={menuNavigation}>Contact us</a></li>
+					<li>
+						<a
+							href="/solutions"
+							on:click={menuNavigation}
+							on:mouseenter={handleHover}
+							on:mouseleave={handleHoverExit}>Solutions</a
+						>
+					</li>
+					<li>
+						<a
+							href="/contact"
+							on:click={menuNavigation}
+							on:mouseenter={handleHover}
+							on:mouseleave={handleHoverExit}>Contact us</a
+						>
+					</li>
 				</ul>
 				<div
 					class="w-[450px] h-[450px] stylePromise opacity-0 relative rounded-full flex justify-center items-center flex-col"
